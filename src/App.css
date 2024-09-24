@@ -15,6 +15,42 @@
   left: 50%;
   transform: translate(-50%,-50%);
 }
+@media (min-height: 805px) {
+  .back {
+    width: 85%;
+    height: 83vh;
+    border-radius: 49px;
+  }
+}
+
+/* @media (min-height: 875px) {
+  .back {
+    width: 17%;
+    height: 83vh;
+    border-radius: 59px;
+  }
+}
+@media (min-height: 912px) {
+  .back {
+    width: 17.5%;
+    height: 83vh;
+    border-radius: 59px;
+  }
+}
+@media (min-height: 962px) {
+  .back {
+    width: 17.5%;
+    height: 83vh;
+    border-radius: 59px;
+  }
+} */
+
+@media (min-height: 1280px) {
+  .back {
+    width: 287px; /* Same size across large screens */
+    height: 83vh;
+  }
+}
 
 @font-face {
   font-family: 'CustomFont';
