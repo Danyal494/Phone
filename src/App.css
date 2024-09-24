@@ -1,0 +1,16 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.back{
+  background-image: url(/public/bg1.jpeg);
+}
+
+@font-face {
+  font-family: 'CustomFont';
+  src: url('/SFPRODISPLAYREGULAR.OTF') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
