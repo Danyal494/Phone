@@ -353,13 +353,30 @@ const handleButtonColorChange = (color) => {
     zIndex: 10,
     borderRadius: "38px",
     height: "83vh", 
-    // width: window.innerWidth < 550 ? "76%":(window.innerWidth < 768 ? "15.5%" : "19px"),
+    // width: window.innerWidth < 500 
+    // ? "348.2px" 
+    // : (window.innerWidth < 768 
+    //   ? "15.5%" 
+    //   : (window.innerWidth < 1200 
+    //     ? "283px" 
+    //     : "283px")),
     width:"287px",
     // height: window.innerWidth < 768 ? "200px" : "83vh", // Adjust based on screen width
     // width: window.innerWidth < 768 ? "100px" : "37vw",  // Adjust based on screen width
-    left: window.innerWidth < 500 ? "12.2%" : (window.innerWidth < 768 ? "15.5%" : "40.5%"), // Adjust left position for mobile
+  //   left: window.innerWidth < 500 
+  // ? "12.2%" 
+  // : (window.innerWidth < 768 
+  //   ? "15.5%" 
+  //   : (window.innerWidth < 1200 
+  //     ? "38%" 
+  //     : "39%")), // Adjust left position for mobile
     // left: window.innerWidth< 500 ? "15.5%" : "40.5%",
-    top: window.innerWidth < "400px" ? "10%" : "5%",     // Adjust based on screen width
+    // left: `${window.innerWidth * 0.1}vw` ,// Adjust the multiplier (0.1 here) to fit your layout needs
+
+    // top: window.innerWidth < "400px" ? "10%" : "5%",     // Adjust based on screen width
+    top: '46.5%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)'
   };
   
   // Use responsiveStyles in your component

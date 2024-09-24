@@ -4,9 +4,10 @@ import React, { useState } from 'react'
 
 const Btn = ({endLoading}) => {
   const [open, setOpen] = useState(false)
-
+  // max-sm:w-[76%] 19
+  // absolute z-20 rounded-[38px] left-[40.5%] top-[5%] w-[287px] max-sm:left-[12.2%]  h-[83vh]
   return (
-    <div className='back absolute z-20 rounded-[38px] left-[40.5%] top-[5%] w-[19%] max-sm:left-[12.2%] max-sm:w-[76%] h-[83vh] flex text-[CustomFont] items-center justify-center'>
+    <div className='back  flex  items-center justify-center'>
       {/* <div className='GG'></div> */}
       <div className='' >
    
