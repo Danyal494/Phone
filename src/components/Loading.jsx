@@ -7,7 +7,7 @@ zoomies.register()
 
 const Loader = () => {
   return (
-    <div className=' absolute z-20 rounded-[38px] left-[40.5%] top-[5%] w-[19%] h-[83vh] bg-black flex items-center justify-center'>
+    <div className='gk  '>
       <div >
       <TiVendorApple className='mx-auto' size={"5em"} color='white' />
         

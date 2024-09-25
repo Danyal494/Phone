@@ -346,41 +346,188 @@ const handleButtonColorChange = (color) => {
 
     return () => clearTimeout(timer);
   }, []);
-
-
-  const responsiveStyles = {
-    position: "absolute",
-    zIndex: 10,
-    borderRadius: "38px",
-    height: "83vh", 
-    // width: window.innerWidth < 500 
-    // ? "348.2px" 
-    // : (window.innerWidth < 768 
-    //   ? "15.5%" 
-    //   : (window.innerWidth < 1200 
-    //     ? "283px" 
-    //     : "283px")),
-    width:"287px",
-    // height: window.innerWidth < 768 ? "200px" : "83vh", // Adjust based on screen width
-    // width: window.innerWidth < 768 ? "100px" : "37vw",  // Adjust based on screen width
-  //   left: window.innerWidth < 500 
-  // ? "12.2%" 
-  // : (window.innerWidth < 768 
-  //   ? "15.5%" 
-  //   : (window.innerWidth < 1200 
-  //     ? "38%" 
-  //     : "39%")), // Adjust left position for mobile
-    // left: window.innerWidth< 500 ? "15.5%" : "40.5%",
-    // left: `${window.innerWidth * 0.1}vw` ,// Adjust the multiplier (0.1 here) to fit your layout needs
-
-    // top: window.innerWidth < "400px" ? "10%" : "5%",     // Adjust based on screen width
-    top: '46.5%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)'
+  const getResponsiveStyles = () => {
+    let styles = {
+      position: "absolute",
+      zIndex: 10,
+      borderRadius: "38px",
+      height: "81.5vh",
+      top: "46.5%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+    };
+  
+    switch (true) {
+      case window.innerHeight < 400:
+        styles.width = "148px";
+       // styles.borderRadius = "62px";
+        break;
+      case window.innerHeight < 410:
+        styles.width = "150px";
+       // styles.borderRadius = "62px";
+        break;
+      case window.innerHeight < 440:
+        styles.width = "158px";
+       // styles.borderRadius = "62px";
+        break;
+      case window.innerHeight < 460:
+        styles.width = "167px";
+       // styles.borderRadius = "62px";
+        break;
+      case window.innerHeight <= 479:
+        styles.width = "175px";
+       // styles.borderRadius = "62px";
+        break;
+      case window.innerHeight <= 510:
+        styles.width = "186px";
+       // styles.borderRadius = "62px";
+        break;
+      case window.innerHeight <= 556:
+        styles.width = "206px";
+       // styles.borderRadius = "62px";
+        break;
+      case window.innerHeight <= 605:
+        styles.width = "237px";
+       // styles.borderRadius = "62px";
+        break;
+      case window.innerHeight <= 658:
+        styles.width = "255px";
+       // styles.borderRadius = "62px";
+        break;
+      case window.innerHeight <= 705:
+        styles.width = "275px";
+       // styles.borderRadius = "62px";
+        break;
+      case window.innerHeight <= 750:
+        styles.width = "291px";
+       // styles.borderRadius = "62px";
+        break;
+      case window.innerHeight <= 785:
+        styles.width = "295px";
+       // styles.borderRadius = "47px";
+        break;
+      case window.innerHeight < 800:
+        styles.width = "297px";
+       // styles.borderRadius = "44px";
+        break;
+      case window.innerHeight < 828:
+        styles.width = "311px";
+       // styles.borderRadius = "47px";
+        break;
+      case window.innerHeight < 875:
+        styles.width = "330px";
+       // styles.borderRadius = "47px";
+        break;
+      case window.innerHeight < 907:
+        styles.width = "354px";
+       // styles.borderRadius = "62px";
+        break;
+      case window.innerHeight < 966:
+        styles.width = "363px";
+       // styles.borderRadius = "49px";
+        break;
+      case window.innerHeight < 1015:
+        styles.width = "384px";
+       // styles.borderRadius = "62px";
+        break;
+      case window.innerHeight < 1050:
+        styles.width = "398px";
+       // styles.borderRadius = "68px";
+        break;
+      case window.innerHeight < 1085:
+        styles.width = "400px";
+       // styles.borderRadius = "61px";
+        break;
+      default:
+        styles.width = "427px";
+       // styles.borderRadius = "80px";  // Fallback for other cases
+        break;
+    }
+  
+    // Optionally, you can include width-based responsiveness here as well, as per your initial code
+    // if (window.innerWidth < 500) {
+    //   styles.width = "348.2px";
+    // } else if (window.innerWidth < 768) {
+    //   styles.width = "15.5%";
+    // } else if (window.innerWidth < 1200) {
+    //   styles.width = "357px";
+    // } else {
+    //   styles.width = "357px";
+    // }
+  
+    return styles;
   };
   
-  // Use responsiveStyles in your component
+  const [responsiveStyles, setResponsiveStyles] = useState(getResponsiveStyles());
+  
+  useEffect(() => {
+    const handleResize = () => {
+      setResponsiveStyles(getResponsiveStyles());
+    };
+  
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
+
+  // const responsiveStyles = {
+  //   position: "absolute",
+  //   zIndex: 10,
+  //   borderRadius: "38px",
+  //   height: "83vh", 
+
+  //   if (window.Height >= 805) {
+  //     width : "85%",
+  //     height : "83vh",
+  //     borderRadius : "49px",
+  //   } else if (window.Height <= 728 && window.Height > 595) {
+  //     width : "13.8%",
+  //     height : "83vh",
+  //     borderRadius : "27px",
+  //   } else if (window.Height <= 595 && window.Height > 544) {
+  //     width : "12.5%",
+  //     height : "83vh",
+  //     borderRadius : "27px",
+  //   } else if (window.Height <= 544 && window.Height > 502) {
+  //     width : "11.5%",
+  //     height : "83vh",
+  //     borderRadius : "27px",
+  //   } else if (windowHeight <= 502) {
+  //     width : "10.7%",
+  //     height : "83vh",
+  //     borderRadius : "27px",
+  //   }}
+
+  //   // width: window.innerWidth < 500 
+  //   // ? "348.2px" 
+  //   // : (window.innerWidth < 768 
+  //   //   ? "15.5%" 
+  //   //   : (window.innerWidth < 1200 
+  //   //     ? "283px" 
+  //   //     : "283px")),
+  //   // width:"287px",
+  //   // height: window.innerWidth < 768 ? "200px" : "83vh", // Adjust based on screen width
+  //   // width: window.innerWidth < 768 ? "100px" : "37vw",  // Adjust based on screen width
+  // //   left: window.innerWidth < 500 
+  // // ? "12.2%" 
+  // // : (window.innerWidth < 768 
+  // //   ? "15.5%" 
+  // //   : (window.innerWidth < 1200 
+  // //     ? "38%" 
+  // //     : "39%")), // Adjust left position for mobile
+  //   // left: window.innerWidth< 500 ? "15.5%" : "40.5%",
+  //   // left: `${window.innerWidth * 0.1}vw` ,// Adjust the multiplier (0.1 here) to fit your layout needs
+
+  //   // top: window.innerWidth < "400px" ? "10%" : "5%",     // Adjust based on screen width
+  //   top: '46.5%',
+  // left: '50%',
+  // transform: 'translate(-50%, -50%)'
+  // };
+  
+  // // Use responsiveStyles in your component
 //   { height: "83vh", width: "37vw", position: "absolute", zIndex: 10 ,left: "20%",top:"30%",borderRadius:"38px"}
+
+
 
   return (
     
