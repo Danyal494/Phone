@@ -554,7 +554,7 @@ const handleButtonColorChange = (color) => {
                 onMouseDown={() => startRotation('up')}
                 onMouseUp={stopRotation}
                 onMouseLeave={stopRotation}
-                className="relative overflow-hidden rounded-lgmax-sm:rounded-none max-sm:hidden h-12 max-sm:h-5 group hover:shadow-lg hover:scale-105 transition duration-500 before:absolute  before:inset-0 before:rounded-lg before:bg-gradient-to-br before:from-pink-400 before:via-purple-400 before:to-indigo-400"
+                className="relative overflow-hidden rounded-lgmax-sm:rounded-none hidden h-12 max-sm:h-5 group hover:shadow-lg hover:scale-105 transition duration-500 before:absolute  before:inset-0 before:rounded-lg before:bg-gradient-to-br before:from-pink-400 before:via-purple-400 before:to-indigo-400"
               >
                 <span className="relative  flex items-center text-white font-bold
      max-sm:text-sm px-4 max-sm:px-1 py-2 max-sm:py-0">Up</span>
@@ -564,7 +564,7 @@ const handleButtonColorChange = (color) => {
               onMouseDown={() => startRotation('left')}
               onMouseUp={stopRotation}
               onMouseLeave={stopRotation}
-              className="relative overflow-hidden rounded-lgmax-sm:rounded-none max-sm:hidden  h-12 max-sm:h-5 group hover:shadow-lg hover:scale-105 transition duration-500 before:absolute  before:inset-0 before:rounded-lg before:bg-gradient-to-br before:from-pink-400 before:via-purple-400 before:to-indigo-400"
+              className="relative overflow-hidden rounded-lgmax-sm:rounded-none hidden  h-12 max-sm:h-5 group hover:shadow-lg hover:scale-105 transition duration-500 before:absolute  before:inset-0 before:rounded-lg before:bg-gradient-to-br before:from-pink-400 before:via-purple-400 before:to-indigo-400"
             >
               <span className="relative flex items-center text-white font-bold
      max-sm:text-sm px-4 max-sm:px-1 py-2 max-sm:py-0">Left</span>
@@ -573,7 +573,7 @@ const handleButtonColorChange = (color) => {
               onMouseDown={() => startRotation('down')}
               onMouseUp={stopRotation}
               onMouseLeave={stopRotation}
-              className="relative overflow-hidden rounded-lgmax-sm:rounded-none max-sm:hidden  h-12 max-sm:h-5 group hover:shadow-lg hover:scale-105 transition duration-500 before:absolute  before:inset-0 before:rounded-lg before:bg-gradient-to-br before:from-pink-400 before:via-purple-400 before:to-indigo-400"
+              className="relative overflow-hidden rounded-lgmax-sm:rounded-none hidden  h-12 max-sm:h-5 group hover:shadow-lg hover:scale-105 transition duration-500 before:absolute  before:inset-0 before:rounded-lg before:bg-gradient-to-br before:from-pink-400 before:via-purple-400 before:to-indigo-400"
             >
               <span className="relative flex items-center text-white font-bold
      max-sm:text-sm px-4 max-sm:px-1 py-2 max-sm:py-0">Down</span>
@@ -582,7 +582,7 @@ const handleButtonColorChange = (color) => {
               onMouseDown={() => startRotation('right')}
               onMouseUp={stopRotation}
               onMouseLeave={stopRotation}
-              className="relative overflow-hidden rounded-lgmax-sm:rounded-none max-sm:hidden  h-12 max-sm:h-5 group hover:shadow-lg hover:scale-105 transition duration-500 before:absolute  before:inset-0 before:rounded-lg before:bg-gradient-to-br before:from-pink-400 before:via-purple-400 before:to-indigo-400"
+              className="relative overflow-hidden rounded-lgmax-sm:rounded-none hidden  h-12 max-sm:h-5 group hover:shadow-lg hover:scale-105 transition duration-500 before:absolute  before:inset-0 before:rounded-lg before:bg-gradient-to-br before:from-pink-400 before:via-purple-400 before:to-indigo-400"
             >
               <span className="relative flex items-center text-white font-bold
      max-sm:text-sm px-4 max-sm:px-1 py-2 max-sm:py-0">Right</span>
@@ -590,7 +590,7 @@ const handleButtonColorChange = (color) => {
           </div>
           <div className='flex max-sm:flex-col max-sm:justify-center max-sm:-right-[135px] max-sm:gap-2 max-sm:-bottom-20 items-center bottom-48 -right-[429px] space-x-8 absolute transform -translate-x-1/2 p-4 rounded'>
             <div className="relative group">
-              <button className="relative overflow-hidden rounded-lgmax-sm:rounded-none max-sm:hidden  h-12 max-sm:h-5 group hover:shadow-lg hover:scale-105 transition duration-500 before:absolute  before:inset-0 before:rounded-lg before:bg-gradient-to-br before:from-pink-400 before:via-purple-400 before:to-indigo-400">
+              <button className="relative overflow-hidden rounded-lgmax-sm:rounded-none hidden  h-12 max-sm:h-5 group hover:shadow-lg hover:scale-105 transition duration-500 before:absolute  before:inset-0 before:rounded-lg before:bg-gradient-to-br before:from-pink-400 before:via-purple-400 before:to-indigo-400">
                 <span className="relative flex items-center text-white font-bold
      max-sm:text-sm px-4 max-sm:px-1 py-2 max-sm:py-0">Color <Icon className='mx-1' icon="pepicons-print:color-picker" /></span>
               </button>
@@ -608,7 +608,7 @@ const handleButtonColorChange = (color) => {
               </div>
             </div>
             <div className="relative group">
-  <button className="relative overflow-hidden rounded-lgmax-sm:rounded-none max-sm:hidden  h-12 max-sm:h-5 group hover:shadow-lg hover:scale-105 transition duration-500 before:absolute  before:inset-0 before:rounded-lg before:bg-gradient-to-br before:from-pink-400 before:via-purple-400 before:to-indigo-400">
+  <button className="relative overflow-hidden rounded-lgmax-sm:rounded-none hidden  h-12 max-sm:h-5 group hover:shadow-lg hover:scale-105 transition duration-500 before:absolute  before:inset-0 before:rounded-lg before:bg-gradient-to-br before:from-pink-400 before:via-purple-400 before:to-indigo-400">
     <span className="relative flex items-center text-white font-bold
      max-sm:text-sm px-4 max-sm:px-1 py-2 max-sm:py-0">
       Text <Icon className='mx-1' icon="pepicons-print:color-picker" />
@@ -629,7 +629,7 @@ const handleButtonColorChange = (color) => {
           
         </label>  */}
 <div className="relative group">
-  <button className="relative overflow-hidden rounded-lgmax-sm:rounded-none max-sm:hidden  h-12 max-sm:h-5 group hover:shadow-lg hover:scale-105 transition duration-500 before:absolute  before:inset-0 before:rounded-lg before:bg-gradient-to-br before:from-pink-400 before:via-purple-400 before:to-indigo-400">
+  <button className="relative overflow-hidden rounded-lgmax-sm:rounded-none hidden  h-12 max-sm:h-5 group hover:shadow-lg hover:scale-105 transition duration-500 before:absolute  before:inset-0 before:rounded-lg before:bg-gradient-to-br before:from-pink-400 before:via-purple-400 before:to-indigo-400">
     <span className="relative flex items-center text-white font-bold
      max-sm:text-sm px-4 max-sm:px-1 py-2 max-sm:py-0">
       Button <Icon className='mx-1' icon="pepicons-print:color-picker" />
@@ -649,7 +649,7 @@ const handleButtonColorChange = (color) => {
                 <BlockPicker color={textColor} onChangeComplete={handleTextColorChange} />
               </div>
             </div> */}
-            <select value={envPreset} onChange={handleEnvPresetChange} className="inline-flex mt-2 p-2 w-28 max-sm:hidden border border-slate-300 rounded focus:outline-none focus:ring-1 focus:ring-slate-300">
+            <select value={envPreset} onChange={handleEnvPresetChange} className="inline-flex mt-2 p-2 w-28 hidden border border-slate-300 rounded focus:outline-none focus:ring-1 focus:ring-slate-300">
               <option value="default">Default</option>
               <option value="city">City</option>
               <option value="sunset">Sunset</option>
@@ -672,7 +672,7 @@ const handleButtonColorChange = (color) => {
             </button> */}
             <button
               onClick={toggleLimitedZoom}
-              className="relative overflow-hidden rounded-lgmax-sm:rounded-none max-sm:hidden  h-12 max-sm:h-5 group hover:shadow-lg hover:scale-105 transition duration-500 before:absolute  before:inset-0 before:rounded-lg before:bg-gradient-to-br before:from-pink-400 before:via-purple-400 before:to-indigo-400"
+              className="relative overflow-hidden rounded-lgmax-sm:rounded-none hidden  h-12 max-sm:h-5 group hover:shadow-lg hover:scale-105 transition duration-500 before:absolute  before:inset-0 before:rounded-lg before:bg-gradient-to-br before:from-pink-400 before:via-purple-400 before:to-indigo-400"
             >
               <span className="relative flex items-center text-white font-bold
      max-sm:font-light max-sm:text-sm px-4 max-sm:px-1 py-2 max-sm:py-0">
