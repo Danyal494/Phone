@@ -4,11 +4,12 @@ import { OrbitControls, Decal, Sphere, Environment } from "@react-three/drei";
 import * as THREE from "three";
 import bg from "/bg1.jpeg";
 import Loader from "./Loading";
+import { CanvasTexture,LinearFilter } from "three";
 
 const DecalOnSphere = () => {
   const sphereRef = useRef();
   const [MailPosition] = useState(new THREE.Vector3(0, 0.06, 2)); // Position of decal
-  const [MailScale] = useState(new THREE.Vector3(0.10, 0.10, 0.10)); // Increase scale of decal
+  const [MailScale] = useState(new THREE.Vector3(0.09, 0.10, 0.1)); // Increase scale of decal
   const MailRotation = new THREE.Euler(0, 0, 0); // Decal rotation
   const Mailtexture = useLoader(THREE.TextureLoader, "/Untitled.png");
   const Instatexture = useLoader(THREE.TextureLoader, "/instagram.png");
@@ -19,15 +20,16 @@ const DecalOnSphere = () => {
   const createTextTexture = () => {
     const canvas = document.createElement("canvas");
     const context = canvas.getContext("2d");
-    canvas.width = 5000;
-    canvas.height = 4800;
+    canvas.width = 6200;
+    canvas.height = 6200;
 
     // Make the background transparent by not filling it
     context.clearRect(0, 0, canvas.width, canvas.height);
+    context.textRendering = "optimizeLegibility";
 
     // Text settings
     context.fillStyle = "white"; // Text color to contrast with the green sphere
-    context.font = "100 40px CustomFont";
+    context.font = "100 150px CustomFont";
     context.textAlign = "center";
     context.textBaseline = "middle";
 
@@ -81,7 +83,7 @@ And so, under the watchful gaze of the tower, the figure continues on. The figur
 
     // Split the paragraph into lines
     const lines = paragraphText.split("\n");
-    const lineHeight = 80;
+    const lineHeight = 140;
     const x = canvas.width / 2;
     let y = canvas.height / 2 - (lines.length / 2) * lineHeight;
 
@@ -89,6 +91,15 @@ And so, under the watchful gaze of the tower, the figure continues on. The figur
       context.fillText(line.trim(), x, y);
       y += lineHeight;
     });
+
+
+    const texture = new CanvasTexture(canvas);
+    texture.anisotropy = 16; // Higher quality
+texture.minFilter = THREE.LinearMipMapLinearFilter;
+texture.magFilter = THREE.LinearFilter;
+texture.wrapS = THREE.ClampToEdgeWrapping;
+texture.wrapT = THREE.ClampToEdgeWrapping;
+texture.needsUpdate = true; 
 
     return new THREE.CanvasTexture(canvas);
   };
@@ -129,7 +140,7 @@ And so, under the watchful gaze of the tower, the figure continues on. The figur
       />
       <Decal
         position={[0.19, 0.06, 2]}
-        scale={[0.10, 0.10, 0.10]}
+        scale={[0.09, 0.10, 0.1]}
         rotation={[0,0,0]}
         map={Instatexture}
         // depthTest={true}
@@ -139,7 +150,7 @@ And so, under the watchful gaze of the tower, the figure continues on. The figur
       />
       <Decal
         position={[0.35, 0.06, 2]}
-        scale={[0.10, 0.10, 0.10]}
+        scale={[0.09, 0.10, 0.1]}
         rotation={[0,0,0]}
         map={Phototexture}
         // depthTest={true}
@@ -149,7 +160,7 @@ And so, under the watchful gaze of the tower, the figure continues on. The figur
       />
       <Decal
         position={[-0.19, 0.06, 2]}
-        scale={[0.10, 0.10, 0.10]}
+        scale={[0.09, 0.10, 0.1]}
         rotation={[0,0,0]}
         map={Safaritexture}
         // depthTest={true}
@@ -302,10 +313,10 @@ const NewSphere = () => {
       >
       <ambientLight intensity={1} />
       <directionalLight position={[10, 10, 5]} intensity={1.5} />
-      <Environment preset="city" background={false} />
+      {/* <Environment preset="city" background={false} /> */}
       <color attach="background" args={["lightblue"]} />
       <DecalOnSphere />
-      <OrbitControls minDistance={10} maxDistance={18} />
+      <OrbitControls minDistance={19} maxDistance={28} />
     </Canvas>)}
    
         </div>
