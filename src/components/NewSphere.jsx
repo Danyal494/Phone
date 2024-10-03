@@ -231,11 +231,11 @@ const NewSphere = () => {
            // styles.borderRadius = "62px";
             break;
           case window.innerHeight <= 705:
-            styles.width = "275px";
+            styles.width = "265px";
            // styles.borderRadius = "62px";
             break;
           case window.innerHeight <= 750:
-            styles.width = "291px";
+            styles.width = "287px";
            // styles.borderRadius = "62px";
             break;
           case window.innerHeight <= 785:
