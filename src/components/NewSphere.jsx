@@ -313,7 +313,7 @@ const NewSphere = () => {
       >
       <ambientLight intensity={1} />
       <directionalLight position={[10, 10, 5]} intensity={1.5} />
-      {/* <Environment preset="city" background={false} /> */}
+      <Environment preset="city" background={false} /> 
       <color attach="background" args={["lightblue"]} />
       <DecalOnSphere />
       <OrbitControls minDistance={19} maxDistance={28} />
