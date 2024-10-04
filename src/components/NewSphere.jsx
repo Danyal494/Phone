@@ -8,7 +8,7 @@ import { CanvasTexture,LinearFilter } from "three";
 
 const DecalOnSphere = () => {
   const sphereRef = useRef();
-  const [MailPosition] = useState(new THREE.Vector3(0, 0.06, 2)); // Position of decal
+  const [MailPosition] = useState(new THREE.Vector3(0, 0.09, 2)); // Position of decal
   const [MailScale] = useState(new THREE.Vector3(0.09, 0.10, 0.1)); // Increase scale of decal
   const MailRotation = new THREE.Euler(0, 0, 0); // Decal rotation
   const Mailtexture = useLoader(THREE.TextureLoader, "/Untitled.png");
@@ -112,6 +112,11 @@ texture.needsUpdate = true;
       // sphereRef.current.rotation.y += 0.01;
     }
   });
+    // State for decal hover
+    const [hoveredDecal, setHoveredDecal] = useState(null);
+  const getDecalScale = (decal) => {
+    return hoveredDecal === decal ? new THREE.Vector3(0.12, 0.13, 0.12) : MailScale; // Adjust scale when hovered
+  };
 
   
 
@@ -127,46 +132,61 @@ texture.needsUpdate = true;
         transparent
         opacity={0.8}
       />
-      {/* Decal Component */}
-      <Decal
+        <Decal
         position={MailPosition}
-        scale={MailScale}
+        scale={getDecalScale("mail")}
         rotation={MailRotation}
         map={Mailtexture}
         // depthTest={true}
         depthWrite={true}
         polygonOffset={true}
         polygonOffsetFactor={-4}
+        onPointerOver={() => setHoveredDecal("mail")}
+        onPointerOut={() => setHoveredDecal(null)}
+        material={new THREE.MeshStandardMaterial({ opacity: 0.9, transparent: true })}
+        style={{ transition: 'transform 0.3s ease' }}
       />
       <Decal
-        position={[0.19, 0.06, 2]}
-        scale={[0.09, 0.10, 0.1]}
+        position={[0.19, 0.09, 2]}
+        scale={getDecalScale("instagram")}
         rotation={[0,0,0]}
         map={Instatexture}
         // depthTest={true}
         depthWrite={true}
         polygonOffset={true}
         polygonOffsetFactor={-4}
+        onPointerOver={() => setHoveredDecal("instagram")}
+        onPointerOut={() => setHoveredDecal(null)}
+        material={new THREE.MeshStandardMaterial({ opacity: 0.9, transparent: true })}
+        style={{ transition: 'transform 0.3s ease' }}
       />
       <Decal
-        position={[0.35, 0.06, 2]}
-        scale={[0.09, 0.10, 0.1]}
+        position={[0.35, 0.09, 2]}
+        scale={getDecalScale("photo")}
         rotation={[0,0,0]}
         map={Phototexture}
         // depthTest={true}
         depthWrite={true}
         polygonOffset={true}
         polygonOffsetFactor={-4}
+        onPointerOver={() => setHoveredDecal("photo")}
+        onPointerOut={() => setHoveredDecal(null)}
+        material={new THREE.MeshStandardMaterial({ opacity: 0.9, transparent: true })}
+        style={{ transition: 'transform 0.3s ease' }}
       />
       <Decal
-        position={[-0.19, 0.06, 2]}
-        scale={[0.09, 0.10, 0.1]}
+        position={[-0.19, 0.09, 2]}
+        scale={getDecalScale("safari")}
         rotation={[0,0,0]}
         map={Safaritexture}
         // depthTest={true}
         depthWrite={true}
         polygonOffset={true}
         polygonOffsetFactor={-4}
+        onPointerOver={() => setHoveredDecal("safari")}
+        onPointerOut={() => setHoveredDecal(null)}
+        material={new THREE.MeshStandardMaterial({ opacity: 0.9, transparent: true })}
+        style={{ transition: 'transform 0.3s ease' }}
       />
     </Sphere>
   );
