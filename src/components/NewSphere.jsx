@@ -10,6 +10,9 @@ const DecalOnSphere = () => {
   const sphereRef = useRef();
   const [MailPosition] = useState(new THREE.Vector3(0, 0.09, 2)); // Position of decal
   const [MailScale] = useState(new THREE.Vector3(0.09, 0.10, 0.1)); // Increase scale of decal
+  const [InstaScale] = useState(new THREE.Vector3(0.09, 0.10, 0.1)); // Increase scale of decal
+  const [SafariScale] = useState(new THREE.Vector3(0.09, 0.10, 0.1)); // Increase scale of decal
+  const [PhotoScale] = useState(new THREE.Vector3(0.09, 0.10, 0.1)); // Increase scale of decal
   const MailRotation = new THREE.Euler(0, 0, 0); // Decal rotation
   const Mailtexture = useLoader(THREE.TextureLoader, "/Untitled.png");
   const Instatexture = useLoader(THREE.TextureLoader, "/instagram.png");
@@ -47,15 +50,15 @@ const DecalOnSphere = () => {
    The moon glows bright in the sky tonight. The moon illuminates the dark as the earth spins slowly.Amidst the silence, whispers of the wind echo
     in every corner, stirring the trees gently and creating a soft lullaby as nature falls into slumber.
 
-    The old clock tower stands tall in the middle of the town. The old clock tower stands tall with its hands frozen at midnight.The old clock tower is a relic from another era, watching silently.
-     The old clock tower stands tall in the middle of the town. The old clock tower stands tall with its bricks weathered by time. The old clock tower echoes the memories of days long gone. 
-     The old clock tower stands tall in the middle of the town. The old clock tower stands tall as the wind howls through its hollow frame, whispering tales from the past. The old clock tower
-      stands tall in the middle of the town. The old clock tower stands tall with a lone raven perched on its peak, gazing over the cobblestone streets below.
+    The old zoom tower stands tall in the middle of the town. The old wasd tower stands tall with its hands frozen at midnight.The old alot tower is a relic from another era, watching silently.
+     The old work tower stands tall in the middle of the town. The old alpha tower stands tall with its bricks weathered by time. The old beta tower echoes the memories of days long gone. 
+     The old loop tower stands tall in the middle of the town. The old gama tower stands tall as the wind howls through its hollow frame, whispering tales from the past. The old zero tower
+      stands tall in the middle of the town. The old Not tower stands tall with a lone raven perched on its peak, gazing over the cobblestone streets below.
 
-The streets are empty, deserted under the glow of the lanterns. The streets are empty, shadows creeping into every corner. The streets are empty, save for the gentle rustling of leaves. 
-The streets are empty, deserted under the glow of the lanterns. The streets are empty, an eerie silence hanging in the air. The streets are empty, echoing the sound of distant footsteps.
- The streets are empty, deserted under the glow of the lanterns. The streets are empty, but every window holds a story. The streets are empty, yet whispers from the past seem to linger.
-  The streets are empty, deserted under the glow of the lanterns. The streets are empty, lit by the dim flickering lights. The streets are empty, carrying the scent of the rain that just fell.
+The streets are empty, deserted under Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem , shadows creeping into every corner. The streets are empty, save for the gentle rustling of leaves. 
+The streets are empty, deserted under ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum , an eerie silence hanging in the air. The streets are empty, echoing the sound of distant footsteps.
+ The streets are empty, deserted under The quick brown fox jumps over the lazy dog, but every window holds a story. The streets are empty, yet whispers from the past seem to linger.
+  The streets are empty, deserted under  The agile feline prowls in the night. The agile feline prowls, lit by the dim flickering lights. The streets are empty, carrying the scent of the rain that just fell.
 
 
 A lone figure emerges, cloaked in mystery and shadow. A lone figure emerges with a tattered coat fluttering in the wind. A lone figure emerges, eyes gleaming with secrets untold. 
@@ -106,22 +109,41 @@ texture.needsUpdate = true;
 
   const textTexture = useMemo(() => createTextTexture(), []);
 
+  
+  const MailRef = useRef();
+  const InstaRef= useRef()
+  const PhotoRef= useRef()
+  const SafariRef= useRef()
+  const [mailHovered, setMailHovered] = useState(false);
+  const [instaHovered, setInstaHovered] = useState(false);
+  const [safariHovered, setSafariHovered] = useState(false);
+  const [photoHovered, setPhotoHovered] = useState(false);
+
   // Rotate the sphere slowly
   useFrame(() => {
-    if (sphereRef.current) {
-      // sphereRef.current.rotation.y += 0.01;
+    if (MailRef.current) {
+      const targetScale = mailHovered ? new THREE.Vector3(1.2, 1.2, 1) : new THREE.Vector3(1, 1, 1);
+      MailRef.current.scale.lerp(targetScale, 0.1);
     }
+    if (InstaRef.current) {
+      const targetScale = instaHovered ? new THREE.Vector3(1.2, 1.2, 1) : new THREE.Vector3(1, 1, 1);
+      InstaRef.current.scale.lerp(targetScale, 0.1);
+    }
+    if (SafariRef.current) {
+      const targetScale = safariHovered ? new THREE.Vector3(1.2, 1.2, 1) : new THREE.Vector3(1, 1, 1);
+      SafariRef.current.scale.lerp(targetScale, 0.1);
+    }
+    if (PhotoRef.current) {
+      const targetScale = photoHovered ? new THREE.Vector3(1.2, 1.2, 1) : new THREE.Vector3(1, 1, 1);
+      PhotoRef.current.scale.lerp(targetScale, 0.1);
+    }
+    
   });
-    // State for decal hover
-    const [hoveredDecal, setHoveredDecal] = useState(null);
-  const getDecalScale = (decal) => {
-    return hoveredDecal === decal ? new THREE.Vector3(0.12, 0.13, 0.12) : MailScale; // Adjust scale when hovered
-  };
 
-  
+ 
 
   return (
-    <Sphere ref={sphereRef} args={[2, 64, 64]} position={[0, 0, 0]}>
+    <Sphere ref={sphereRef} args={[2, 128, 128]} position={[0, 0, 0]}>
       <meshStandardMaterial
         // color={"green"}
         metalness={0}
@@ -132,61 +154,69 @@ texture.needsUpdate = true;
         transparent
         opacity={0.8}
       />
-        <Decal
-        position={MailPosition}
-        scale={getDecalScale("mail")}
-        rotation={MailRotation}
-        map={Mailtexture}
-        // depthTest={true}
-        depthWrite={true}
-        polygonOffset={true}
-        polygonOffsetFactor={-4}
-        onPointerOver={() => setHoveredDecal("mail")}
-        onPointerOut={() => setHoveredDecal(null)}
-        material={new THREE.MeshStandardMaterial({ opacity: 0.9, transparent: true })}
-        style={{ transition: 'transform 0.3s ease' }}
-      />
-      <Decal
-        position={[0.19, 0.09, 2]}
-        scale={getDecalScale("instagram")}
-        rotation={[0,0,0]}
-        map={Instatexture}
-        // depthTest={true}
-        depthWrite={true}
-        polygonOffset={true}
-        polygonOffsetFactor={-4}
-        onPointerOver={() => setHoveredDecal("instagram")}
-        onPointerOut={() => setHoveredDecal(null)}
-        material={new THREE.MeshStandardMaterial({ opacity: 0.9, transparent: true })}
-        style={{ transition: 'transform 0.3s ease' }}
-      />
+       <Decal
+      position={[0, 0.09, 2]}
+      scale={MailScale}
+      rotation={[0, 0, 0]}
+      map={Mailtexture}
+      depthWrite={true}
+      polygonOffset={true}
+      polygonOffsetFactor={-4}
+      onPointerOver={() => {
+        setMailHovered(true);
+        // console.log('mail hovered');
+      }}
+      onPointerOut={() => {
+        setMailHovered(false);
+        // console.log('mail unhovered');
+      }}
+      ref={MailRef}
+    />
+       <Decal
+      position={[0.19, 0.09, 2]}
+      scale={InstaScale}
+      rotation={[0, 0, 0]}
+      map={Instatexture}
+      depthWrite={true}
+      polygonOffset={true}
+      polygonOffsetFactor={-4}
+      onPointerOver={() => {
+        setInstaHovered(true);
+        // console.log('Insta hovered');
+      }}
+      onPointerOut={() => {
+        setInstaHovered(false);
+        // console.log('Insta unhovered');
+      }}
+      ref={InstaRef}
+    />
       <Decal
         position={[0.35, 0.09, 2]}
-        scale={getDecalScale("photo")}
+        scale={PhotoScale}
         rotation={[0,0,0]}
         map={Phototexture}
         // depthTest={true}
         depthWrite={true}
         polygonOffset={true}
         polygonOffsetFactor={-4}
-        onPointerOver={() => setHoveredDecal("photo")}
-        onPointerOut={() => setHoveredDecal(null)}
-        material={new THREE.MeshStandardMaterial({ opacity: 0.9, transparent: true })}
-        style={{ transition: 'transform 0.3s ease' }}
+        onPointerOver={() => setPhotoHovered(true)}
+        onPointerOut={() => setPhotoHovered(false)}
+        ref={PhotoRef}
+   
       />
       <Decal
         position={[-0.19, 0.09, 2]}
-        scale={getDecalScale("safari")}
+        scale={SafariScale}
         rotation={[0,0,0]}
         map={Safaritexture}
         // depthTest={true}
         depthWrite={true}
         polygonOffset={true}
         polygonOffsetFactor={-4}
-        onPointerOver={() => setHoveredDecal("safari")}
-        onPointerOut={() => setHoveredDecal(null)}
-        material={new THREE.MeshStandardMaterial({ opacity: 0.9, transparent: true })}
-        style={{ transition: 'transform 0.3s ease' }}
+        onPointerOver={() => setSafariHovered(true)}
+        onPointerOut={() => setSafariHovered(false)}
+        ref={SafariRef}
+      
       />
     </Sphere>
   );
@@ -336,7 +366,9 @@ const NewSphere = () => {
       <Environment preset="city" background={false} /> 
       <color attach="background" args={["lightblue"]} />
       <DecalOnSphere />
-      <OrbitControls minDistance={19} maxDistance={28} />
+      <OrbitControls 
+      minDistance={19} maxDistance={28}
+       />
     </Canvas>)}
    
         </div>

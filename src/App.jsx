@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import './App.css'
-import Tasks from './components/Tasks'
+
 import ITask from './components/ITask'
 import Btn from './components/Btn'
 import NewSphere from './components/NewSphere'
