@@ -122,26 +122,27 @@ texture.needsUpdate = true;
   
   // Rotate the sphere slowly
   useFrame(() => {
+    const lerpspeed = 0.05
     if (MailRef.current) {
       const targetScale = mailClicked ? new THREE.Vector3(1.2, 1.2, 1) : new THREE.Vector3(1, 1, 1);
-      MailRef.current.scale.lerp(targetScale, 0.1);
+      MailRef.current.scale.lerp(targetScale, lerpspeed);
     }
     if (InstaRef.current) {
       const targetScale = instaClicked ? new THREE.Vector3(1.2, 1.2, 1) : new THREE.Vector3(1, 1, 1);
-      InstaRef.current.scale.lerp(targetScale, 0.1);
+      InstaRef.current.scale.lerp(targetScale, lerpspeed);
     }
     if (SafariRef.current) {
       const targetScale = safariClicked ? new THREE.Vector3(1.2, 1.2, 1) : new THREE.Vector3(1, 1, 1);
-      SafariRef.current.scale.lerp(targetScale, 0.1);
+      SafariRef.current.scale.lerp(targetScale, lerpspeed);
     }
     if (PhotoRef.current) {
       const targetScale = photoClicked ? new THREE.Vector3(1.2, 1.2, 1) : new THREE.Vector3(1, 1, 1);
-      PhotoRef.current.scale.lerp(targetScale, 0.1);
+      PhotoRef.current.scale.lerp(targetScale, lerpspeed);
     }
   });
   
   return (
-    <Sphere ref={sphereRef} args={[2, 128, 128]} position={[0, 0, 0]}>
+    <Sphere ref={sphereRef} args={[2, 128, 128]} position={[-0.1, 0, 0]}>
       <meshStandardMaterial
         metalness={0}
         roughness={0}
@@ -163,7 +164,7 @@ texture.needsUpdate = true;
         ref={MailRef}
       />
       <Decal
-        position={[0.19, 0.09, 2]}
+        position={[0.19, 0.08, 2]}
         scale={InstaScale}
         rotation={[0, 0, 0]}
         map={Instatexture}
@@ -174,7 +175,7 @@ texture.needsUpdate = true;
         ref={InstaRef}
       />
       <Decal
-        position={[0.35, 0.09, 2]}
+        position={[0.35, 0.08, 2]}
         scale={PhotoScale}
         rotation={[0, 0, 0]}
         map={Phototexture}
@@ -185,7 +186,7 @@ texture.needsUpdate = true;
         ref={PhotoRef}
       />
       <Decal
-        position={[-0.19, 0.09, 2]}
+        position={[-0.19, 0.08, 2]}
         scale={SafariScale}
         rotation={[0, 0, 0]}
         map={Safaritexture}
@@ -414,7 +415,7 @@ const NewSphere = () => {
       <color attach="background" args={["lightblue"]} />
       <DecalOnSphere />
       <OrbitControls 
-      minDistance={19} maxDistance={28} 
+      minDistance={29} maxDistance={35} 
       zoomSpeed={0.1}
        />
     </Canvas>)}
