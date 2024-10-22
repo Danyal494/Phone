@@ -23,8 +23,9 @@ const DecalOnSphere = () => {
   const createTextTexture = () => {
     const canvas = document.createElement("canvas");
     const context = canvas.getContext("2d");
-    canvas.width = 6200;
-    canvas.height = 6200;
+    canvas.width = 6850;
+    canvas.height = 5700;
+
 
     // Make the background transparent by not filling it
     context.clearRect(0, 0, canvas.width, canvas.height);
@@ -32,7 +33,7 @@ const DecalOnSphere = () => {
 
     // Text settings
     context.fillStyle = "white"; // Text color to contrast with the green sphere
-    context.font = "100 60px CustomFont";
+    context.font = "100 160px CustomFont";
     context.textAlign = "center";
     context.textBaseline = "middle";
 
@@ -111,41 +112,37 @@ texture.needsUpdate = true;
 
   
   const MailRef = useRef();
-  const InstaRef= useRef()
-  const PhotoRef= useRef()
-  const SafariRef= useRef()
-  const [mailHovered, setMailHovered] = useState(false);
-  const [instaHovered, setInstaHovered] = useState(false);
-  const [safariHovered, setSafariHovered] = useState(false);
-  const [photoHovered, setPhotoHovered] = useState(false);
-
+  const InstaRef = useRef();
+  const PhotoRef = useRef();
+  const SafariRef = useRef();
+  const [mailClicked, setMailClicked] = useState(false);
+  const [instaClicked, setInstaClicked] = useState(false);
+  const [safariClicked, setSafariClicked] = useState(false);
+  const [photoClicked, setPhotoClicked] = useState(false);
+  
   // Rotate the sphere slowly
   useFrame(() => {
     if (MailRef.current) {
-      const targetScale = mailHovered ? new THREE.Vector3(1.2, 1.2, 1) : new THREE.Vector3(1, 1, 1);
+      const targetScale = mailClicked ? new THREE.Vector3(1.2, 1.2, 1) : new THREE.Vector3(1, 1, 1);
       MailRef.current.scale.lerp(targetScale, 0.1);
     }
     if (InstaRef.current) {
-      const targetScale = instaHovered ? new THREE.Vector3(1.2, 1.2, 1) : new THREE.Vector3(1, 1, 1);
+      const targetScale = instaClicked ? new THREE.Vector3(1.2, 1.2, 1) : new THREE.Vector3(1, 1, 1);
       InstaRef.current.scale.lerp(targetScale, 0.1);
     }
     if (SafariRef.current) {
-      const targetScale = safariHovered ? new THREE.Vector3(1.2, 1.2, 1) : new THREE.Vector3(1, 1, 1);
+      const targetScale = safariClicked ? new THREE.Vector3(1.2, 1.2, 1) : new THREE.Vector3(1, 1, 1);
       SafariRef.current.scale.lerp(targetScale, 0.1);
     }
     if (PhotoRef.current) {
-      const targetScale = photoHovered ? new THREE.Vector3(1.2, 1.2, 1) : new THREE.Vector3(1, 1, 1);
+      const targetScale = photoClicked ? new THREE.Vector3(1.2, 1.2, 1) : new THREE.Vector3(1, 1, 1);
       PhotoRef.current.scale.lerp(targetScale, 0.1);
     }
-    
   });
-
- 
-
+  
   return (
     <Sphere ref={sphereRef} args={[2, 128, 128]} position={[0, 0, 0]}>
       <meshStandardMaterial
-        // color={"green"}
         metalness={0}
         roughness={0}
         emissiveMap={textTexture}
@@ -154,72 +151,53 @@ texture.needsUpdate = true;
         transparent
         opacity={0.8}
       />
-       <Decal
-      position={[0, 0.09, 2]}
-      scale={MailScale}
-      rotation={[0, 0, 0]}
-      map={Mailtexture}
-      depthWrite={true}
-      polygonOffset={true}
-      polygonOffsetFactor={-4}
-      onPointerOver={() => {
-        setMailHovered(true);
-        // console.log('mail hovered');
-      }}
-      onPointerOut={() => {
-        setMailHovered(false);
-        // console.log('mail unhovered');
-      }}
-      ref={MailRef}
-    />
-       <Decal
-      position={[0.19, 0.09, 2]}
-      scale={InstaScale}
-      rotation={[0, 0, 0]}
-      map={Instatexture}
-      depthWrite={true}
-      polygonOffset={true}
-      polygonOffsetFactor={-4}
-      onPointerOver={() => {
-        setInstaHovered(true);
-        // console.log('Insta hovered');
-      }}
-      onPointerOut={() => {
-        setInstaHovered(false);
-        // console.log('Insta unhovered');
-      }}
-      ref={InstaRef}
-    />
       <Decal
-        position={[0.35, 0.09, 2]}
-        scale={PhotoScale}
-        rotation={[0,0,0]}
-        map={Phototexture}
-        // depthTest={true}
+        position={[0, 0.09, 2]}
+        scale={MailScale}
+        rotation={[0, 0, 0]}
+        map={Mailtexture}
         depthWrite={true}
         polygonOffset={true}
         polygonOffsetFactor={-4}
-        onPointerOver={() => setPhotoHovered(true)}
-        onPointerOut={() => setPhotoHovered(false)}
+        onClick={() => setMailClicked(!mailClicked)}
+        ref={MailRef}
+      />
+      <Decal
+        position={[0.19, 0.09, 2]}
+        scale={InstaScale}
+        rotation={[0, 0, 0]}
+        map={Instatexture}
+        depthWrite={true}
+        polygonOffset={true}
+        polygonOffsetFactor={-4}
+        onClick={() => setInstaClicked(!instaClicked)}
+        ref={InstaRef}
+      />
+      <Decal
+        position={[0.35, 0.09, 2]}
+        scale={PhotoScale}
+        rotation={[0, 0, 0]}
+        map={Phototexture}
+        depthWrite={true}
+        polygonOffset={true}
+        polygonOffsetFactor={-4}
+        onClick={() => setPhotoClicked(!photoClicked)}
         ref={PhotoRef}
-   
       />
       <Decal
         position={[-0.19, 0.09, 2]}
         scale={SafariScale}
-        rotation={[0,0,0]}
+        rotation={[0, 0, 0]}
         map={Safaritexture}
-        // depthTest={true}
         depthWrite={true}
         polygonOffset={true}
         polygonOffsetFactor={-4}
-        onPointerOver={() => setSafariHovered(true)}
-        onPointerOut={() => setSafariHovered(false)}
+        onClick={() => setSafariClicked(!safariClicked)}
         ref={SafariRef}
-      
       />
     </Sphere>
   );
+  
 };
 
 const NewSphere = () => {
